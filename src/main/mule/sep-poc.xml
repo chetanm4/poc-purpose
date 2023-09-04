@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2ed5fab2-7dac-442f-8c63-37668d129798" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sep-pocFlow" doc:id="0f35cf69-0853-4cb9-8d19-321c74c15a19" >
+		<http:listener doc:name="Listener" doc:id="d843e30f-db82-4992-b26d-b31b5fbe498d" config-ref="HTTP_Listener_config" path="/poc"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7452c560-2f86-40da-9d5f-36030a532c09" message="#[payload]"/>
+	</flow>
+</mule>
